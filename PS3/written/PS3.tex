@@ -1,0 +1,236 @@
+\documentclass[]{article}
+
+% add math
+\usepackage{amssymb,amsmath}
+
+% add nice links and colors
+\usepackage{xcolor}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{pdfborder={0 0 0},breaklinks=true,bookmarks=true,colorlinks=true}
+
+% for algorithms and code
+\usepackage{listings}
+\lstnewenvironment{itemlisting}[1][]
+ {%
+  \mbox{}
+  \vspace*{-\baselineskip}
+  \lstset{
+    xleftmargin=\leftmargin,
+    linewidth=\linewidth,
+    #1
+  }%
+ }
+ {}
+\lstset
+{ %Formatting for code in appendix
+    language=C++,
+    %basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    %tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\newcommand{\setalglineno}[1]{%
+  \setcounter{ALG@line}{\numexpr#1-1}}
+\makeatletter
+\newcommand\fs@spaceruled{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@ruled
+  \def\@fs@pre{\vspace{0.4\baselineskip}\hrule height.8pt depth0pt \kern2pt}%
+  \def\@fs@post{\vspace{-0.4\baselineskip}\kern2pt\hrule\relax\vspace{-12pt}}%
+  \def\@fs@mid{\kern2pt\hrule\kern2pt}%
+  \let\@fs@iftopcapt\iftrue}
+\makeatother
+
+% some basic paragraph styling
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+\usepackage{setspace}
+\usepackage{enumitem}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+% custom commands
+% if you want to leave a \todo{I need to finish this} reminder!
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+
+% title and author
+\title{COMS BC 3159 - S24: Problem Set 3}
+\author{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                                       %
+    % TODO: Your Name Here                  %
+    %                                       %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Introduction:}  
+The following exercises will explore trajectory optimization.
+
+Finally, we'd like to remind you that all work should be yours and yours alone. This being said, in addition to being able to ask questions at office hours, you are allowed to discuss questions with fellow classmates, provided 1) you note the people with whom you collaborated, and 2) you \textbf{DO NOT} copy any answers. Please write up the solutions to all problems independently.
+
+Without further ado, let's jump right in!
+
+\bigskip
+\textbf{Collaborators:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                       %
+% TODO: Names of any Collaborators Here %
+%                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+\textbf{AI Tool Disclosure:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                       %
+% TODO: How did you use AI tools?       %
+%                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Problem 1 (6 Points):}
+Please answer the following questions in 1-3 sentences.
+\begin{enumerate}[label=(\alph*)]
+    \item Why might you want to use a factorization method over a standard matrix inverse when you are solving linear system(s) of the form $Ax=b$?
+    \item Why might you prefer to use an iterative method over a factorization based method when you are solving linear system(s) of the form $Ax=b$?
+    \item Why might you want to use a preconditioner with an iterative method?
+\end{enumerate}
+
+\textbf{Solution 1:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                       %
+%   TODO: Your solution to Problem 1    %
+%                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}[label=(\alph*)]
+    \item % 1a
+    \item % 1b
+    \item % 1c
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection*{Problem 2 (8 Points):}
+For the following questions please indicate if the statement is true or false and then explain your answer in 1-3 sentences.
+\begin{enumerate}[label=(\alph*)]
+    \item Constrained optimization problems can always find a local minima via gradient descent.
+    \item Iterative methods for linear system(s) of the form $Ax=b$ where $A\in \mathcal{R}^N$ will always converge in $N$ iterations.
+    \item Adding additional constraints into direct transcription methods does not change the overall structure or 
+    algorithmic flow of the problem.
+    \item Adding additional constraints into differential dynamic programming methods does not change the overall structure or algorithmic flow of the problem.
+\end{enumerate}
+
+\textbf{Solution 2:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: Your solution to Problem 2      %
+%       Note you can use $\blacksquare$ %
+%       to fill in true or false!       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}[label=(\alph*)]
+    \item $\Box$ True \quad \quad $\Box$ False \\
+          % Explanation of 1a
+    \item $\Box$ True \quad \quad $\Box$ False \\
+          % Explanation of 1b
+    \item $\Box$ True \quad \quad $\Box$ False \\
+          % Explanation of 1c
+    \item $\Box$ True \quad \quad $\Box$ False \\
+          % Explanation of 1d
+    
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\subsection*{Problem 3 (8 Points):}
+Assume you are solving the trajectory optimization problem for a pendulum swinging up from the downward, stable, equilibrium of $x_s = (0,0)$ to the upward, unstable, equilibrium of $x_g = (\pi,0)$ under the following cost function where $Q=I, R = 0.1I, Q_D = 100I$:\\ $J = (x_N-x_g)^TQ_N(x_N-x_g) + \sum_{k=0}^{N-1} (x_k-x_g)^TQ(x_k-x_g) + u_k^TRu_k$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Assuming that $N=10$ knot points along the trajectory, how many decision variables are there when solving this using a direct transcription method?
+    \item Assuming that $N=10$ knot points along the trajectory, how many decision variables are there when solving this using a differential dynamic programming method?
+    \item Assuming that $N=10$ knot points along the trajectory, how many constraints are there when solving this using a direct transcription method?
+    \item Assuming that $N=10$ knot points along the trajectory, how many constraints are there when solving this using a differential dynamic programming method?
+\end{enumerate}
+
+Note: Please add 1 sentence describing why you wrote down your answer so that we can provide partial credit if you are incorrect.
+
+\textbf{Solution 3:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                       %
+% TODO: Your solution to Problem 3      %
+%                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}[label=(\alph*)]
+    \item % 3a
+    \item % 3b
+    \item % 3c
+    \item % 3d
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection*{Problem 4 (4 Points)}
+\begin{enumerate}[label=(\alph*)]
+    \item True or False. Quadratic penalty methods transform constrained problems into unconstrained problems that can be quickly solved to very high precision in very few iterations. Please explain your answer in 1-3 sentences.
+    \item Imagine you are using an augmented Lagrangian method to solve a 1-dimensional optimization problem with a constraint $g(x) = 3x - 7$ starting with $\mu = 10$. After the first outer iteration the current value of $x = 4$. What would you update $\lambda$ be? Assume that we initialized $\lambda = 0$.
+    
+\end{enumerate}
+
+\textbf{Solution 4:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: Your solution to Problem 4      %
+%       Note you can use $\blacksquare$ %
+%       to fill in true or false!       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}[label=(\alph*)]
+    \item $\Box$ True \quad \quad $\Box$ False \\
+          % Explanation of 4a
+    \item % Your answer to 4b
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection*{Problem 5 (6 Points)}
+    Assume $x$ is a vector in $\mathcal{R}^N$ and that we are optimizing the loss:
+    $$\mathcal{L}(x) = \tfrac{1}{2}x^TQx + 1 \quad \text{where} \quad Q = 3I$$
+\begin{enumerate}[label=(\alph*)]
+    \item What is the dimension of $Q$?
+    \item What is the gradient, $\nabla$, of $\mathcal{L}(x)$
+    \item What is the hessian, $\nabla^2$, of $\mathcal{L}(x)$
+\end{enumerate}
+
+\textbf{Solution 5:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                       %
+% TODO: Your solution to Problem 5      %
+%                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}[label=(\alph*)]
+    \item % 5a solution goes here
+    \item % 5b solution goes here
+    \item % 5c solution goes here
+\end{enumerate}
+
+\end{document}
